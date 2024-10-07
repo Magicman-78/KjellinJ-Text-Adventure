@@ -2,6 +2,28 @@
 {
     internal class Program
     {
+        static void TypeLine(string line, int Delay = 50)
+        {
+            // Counts how many characters are in your word n
+            for (int i = 0; i < line.Length; i++)
+            {
+                Console.Write(line[i]);
+                Thread.Sleep(Delay); // Sleep for 150 milliseconds
+            }
+
+            Console.WriteLine();
+        }
+        static void PrintMainMenu()
+        {
+            TypeLine("Hello! And welcome to Josiah's wonderful world!");
+            TypeLine("Where would you like to go?");
+            TypeLine("The squishy room");
+            TypeLine("The bathroom");
+            TypeLine("The silent room");
+            TypeLine("The hallway");
+
+            
+        }
         static void Main(string[] args)
         {
             // string insert name here = "whatever you want it to print"; will print whatever message you want
@@ -13,12 +35,14 @@
             // Console.ReadKey; will make the console wait until you press a button to read the next message
             // string myMessage = Console.ReadLine(); and Console.Writeline(myMessage); will print back whatever you assign (type) to be myMessage
 
+            PrintMainMenu();
 
+            string Answer = Console.ReadLine();
 
-
-            Console.WriteLine("Hello, World!");
-
-            
+            if (Answer == "The squishy room")
+            {
+                TypeLine("The walls and floor are covered")
+            }
         }
     }
 }
