@@ -118,7 +118,7 @@ namespace Josiahs_Wonderful_World
 
            
 
-            if (Answer == "The bathroom")
+            if (Answer.ToUpper() == "THE BATHROOM")
             {
                 Type("The walls have smiling");
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -320,11 +320,11 @@ namespace Josiahs_Wonderful_World
 
                     if (Answer == "Enter the electrical room")
                     {
-                        TypeLine("The electrical room is really more of a closet");
-                        TypeLine("Inside is a few mops and brooms and other custodial objects that the janitor would use");
-                        TypeLine("On the wall is the electrical box");
-                        TypeLine("You open it up and everything seems to be fine with it");
-                        TypeLine("What would you like to do?");
+                        TypeLine("The electrical room is really more of a closet\n");
+                        TypeLine("Inside is a few mops and brooms and other custodial objects that the janitor would use\n");
+                        TypeLine("On the wall is the electrical box\n");
+                        TypeLine("You open it up and everything seems to be fine with it\n");
+                        TypeLine("What would you like to do?\n");
                         TypeLine(">Leave");
 
                         Answer = Console.ReadLine();
