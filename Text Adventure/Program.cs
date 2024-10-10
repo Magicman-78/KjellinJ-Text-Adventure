@@ -9,7 +9,7 @@ namespace Josiahs_Wonderful_World
     {
         static bool HasKey = false;
         // Makes a string named "line" and an int named "Delay" that has a default 50 millisecond sleep time
-        static void Type(string line, int Delay = 50)
+        static void Type(string line, int Delay = 0)
         {
             // Counts how many characters are in your word
             for (int i = 0; i < line.Length; i++)
@@ -20,7 +20,7 @@ namespace Josiahs_Wonderful_World
 
         }
         // This copy of the code above allows me to use the Type code but it ends the line afterwards
-        static void TypeLine(string line, int Delay = 50)
+        static void TypeLine(string line, int Delay = 0)
         {
             Type(line, Delay);
 
@@ -84,22 +84,36 @@ namespace Josiahs_Wonderful_World
                 TypeLine("Your shoes squish and sink slightly into the floor as you step on it\n");
                 TypeLine("It reeks of something dead\n");
                 TypeLine("What would you like to do?\n");
-                TypeLine("Feel the wall\n");
-                TypeLine("Leave\n");
+                TypeLine(">Feel the wall\n");
+                TypeLine(">Leave\n");
 
                 Answer = Console.ReadLine();
 
                 if (Answer == "Feel the wall") 
                 {
-                    TypeLine("You slide your hand against the wall. It feels slightly warm, and it covers your hand in a thin slimy layer that you quickly wipe off on your shirt");
+                    TypeLine("You slide your hand against the wall. It feels slightly warm, and it covers your hand in a thin slimy layer that you quickly wipe off on your shirt\n");
+                    TypeLine(">Leave");
+
+                    Answer = Console.ReadLine();
+
+                    if (Answer == "Leave")
+                    {
+                        PrintMainArea();
+
+                        Answer = Console.ReadLine();
+                    }
+                    
                 }
+
                 else if (Answer == "Leave")
                 {
                     PrintMainArea();
                 }
 
-                Answer = Console.ReadLine();
-
+                else
+                {
+                    SnarkyRemark();
+                }
             }
 
            
@@ -133,6 +147,8 @@ namespace Josiahs_Wonderful_World
                     {
                         PrintMainArea();
                     }
+
+                    Answer= Console.ReadLine();
                 }
 
                 else if (Answer == "Leave")
@@ -170,7 +186,25 @@ namespace Josiahs_Wonderful_World
         
             if (Answer == "The hallway")
             {
-                TypeLine("As you stand in the middle of the hall, you look up at the colorful drawings made by all of this year's patients\n");
+                Type("As you stand in the middle of the hall, you look up at the ");
+                Console.ForegroundColor= ConsoleColor.Green;
+                Type("c");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Type("o");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Type("l");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Type("o");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Type("r");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Type("f");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Type("u");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Type("l ");
+                Console.ForegroundColor = ConsoleColor.White;
+                TypeLine("drawings made by all of this year's patients");
                 TypeLine("Looking around at the empty hall and rooms gives you an eerie feeling that something is missing\n");
                 TypeLine("There should be kids running around and smiling as they run past you, excited for whatever the doctor wants to show them next\n");
                 Type("This thought makes you ");
@@ -187,6 +221,7 @@ namespace Josiahs_Wonderful_World
                 TypeLine(">The hallway across from you\n");
                 TypeLine(">The empty benches\n");
                 TypeLine(">The front doors\n");
+                TypeLine("Go back the other way\n");
 
                 Answer = Console.ReadLine();
 
@@ -196,10 +231,12 @@ namespace Josiahs_Wonderful_World
                     TypeLine("You look into the office window and see an old dusty computer and keyboard sitting on a desk, as well as two filing cabinets with drawers in disarray\n");
                     TypeLine("Maybe there's a key around here somewhere?\n");
 
-                    if (HasKey = true)
+                    if (HasKey == true)
                     {
                         TypeLine("You remember that you found a key inside that nasty bathroom\n");
                         TypeLine("Try the key? (Yes or No)\n");
+
+                        Answer = Console.ReadLine();
 
                         if (Answer == "Yes")
                         {
@@ -212,16 +249,34 @@ namespace Josiahs_Wonderful_World
                             TypeLine("There should be a sticky note with the password around here somewhere\n");
                             TypeLine("Look around? (Yes or No)\n");
 
+                            Answer = Console.ReadLine();
+
                             if (Answer == "Yes")
                             {
-                                TypeLine("You search around the various filing cabinets and papers strewn across the floor");
-                                TypeLine("After a few minutes of searching, you find sticky note with the code 8372");
-                                TypeLine("");
+                                TypeLine("You search around the various filing cabinets and papers strewn across the floor\n");
+                                TypeLine("After a few minutes of searching, you find sticky note with the code 8372\n");
+                                TypeLine("You open the files on the computer’s desktop and see reports on the children that they kept here\n");
+                                TypeLine("This is what they say:\n");
+                                Console.WriteLine("Report #23");
+                                Console.WriteLine("4/21/88");
+                                Console.WriteLine("Patient number 2 has been exhibiting more and more dangerous behavior, and his health is rapidly deteriorating. He hasn’t been behaving well with the other kids and often starts fights. One time when another doctor came to visit him in his room, he tried to kill him with a colored pencil. The doctor was wounded in the neck and is still recovering.\n");
+                                Console.WriteLine("Report #30");
+                                Console.WriteLine("5/7/88");
+                                Console.WriteLine("The children are getting more and more out of control. They have all begun retaliating against us and won’t follow anything we say. It’s getting harder and harder to keep them in their rooms. I fear that they may overtake us soon, and at the time of writing this, it may be too late.\n");
+                                Console.WriteLine("Report #31");
+                                Console.WriteLine("5/7/88");
+                                Console.WriteLine("Everything is in chaos as the alarms are blaring and we have been forced to go on lockdown. As I am writing this, our numbers are quickly decreasing. If you are reading this, I’m already dead, and the experiment has failed. Maybe one day somebody will succeed where we have failed. I wonder what awaits me in the great beyond. After all I’ve done, it surely can’t be anything good. God help us now.\n");
+                                TypeLine("You knew that there was no hope for this place, but a part of you deep down still hoped there was a chance that your boy was still out there\n");
+                                TypeLine("Just as a tear slides down your cheek slowly, the power goes out and you can’t see a thing\n");
+                                TypeLine("Luckily you came prepared for this with an industrial flashlight on your hip\n");
+                                TypeLine("You leave the office, trying not to trip over anything in the dark\n");
+                                TypeLine("Where would you like to go?\n");
+                                TypeLine(">The hallway across from you\n");
                             }
 
                             else if (Answer == "No")
                             {
-
+                                PrintLobby();
                             }
 
                             else
@@ -235,12 +290,11 @@ namespace Josiahs_Wonderful_World
                             PrintLobby();
                         }
 
-                        Answer = Console.ReadLine();
                     }
 
                     else if (HasKey == false)
                     {
-                        TypeLine("Leave");
+                        TypeLine(">Leave");
 
                         if (Answer == "Leave")
                         {
@@ -250,6 +304,60 @@ namespace Josiahs_Wonderful_World
                         Answer = Console.ReadLine();
                     }
                 }
+            
+                else if (Answer == "The hallway across from you")
+                {
+                    TypeLine("As you walk down the corridor you imagine the horrible things that happened here\n");
+                    TypeLine("It must have been terrible being a child here\n");
+                    TypeLine("You feel ashamed for ever leaving your kid here\n");
+                    TypeLine("When you reach the end of the hall, there are several barricaded rooms and a window above you that casts pale moonlight onto the ground\n");
+                    TypeLine("One door is untouched, and has a label beside it that reads “electrical room”\n");
+                    TypeLine("What do you want to do?\n");
+                    TypeLine(">Enter the electrical room");
+                    TypeLine(">Go back to the lobby");
+
+                    Answer = Console.ReadLine();
+
+                    if (Answer == "Enter the electrical room")
+                    {
+                        TypeLine("The electrical room is really more of a closet");
+                        TypeLine("Inside is a few mops and brooms and other custodial objects that the janitor would use");
+                        TypeLine("On the wall is the electrical box");
+                        TypeLine("You open it up and everything seems to be fine with it");
+                        TypeLine("What would you like to do?");
+                        TypeLine(">Leave");
+
+                        Answer = Console.ReadLine();
+                    }
+
+                    else if (Answer == "Go back to the lobby")
+                    {
+                        PrintLobby();
+                    }
+
+                    else
+                    {
+                        SnarkyRemark();
+                    }
+                    
+                
+                }
+            
+                else if (Answer == "The empty benches")
+                {
+
+                }
+            
+                else if (Answer == "The front doors")
+                {
+
+                }
+
+                else if (Answer == "Go back")
+                {
+                    PrintMainArea();
+                }
+
             }
         }
     }
