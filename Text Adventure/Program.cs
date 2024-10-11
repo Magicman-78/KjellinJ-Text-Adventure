@@ -74,7 +74,7 @@ namespace Josiahs_Wonderful_World
 
             string Answer = Console.ReadLine();
 
-            if (Answer == "The squishy room")
+            if (Answer.ToUpper() == "The squishy room".ToUpper().ToUpper())
             {
                 Type("The walls and floor are covered in squishy moist");
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -89,7 +89,7 @@ namespace Josiahs_Wonderful_World
 
                 Answer = Console.ReadLine();
 
-                if (Answer == "Feel the wall") 
+                if (Answer.ToUpper() == "Feel the wall".ToUpper()) 
                 {
                     TypeLine("You slide your hand against the wall. It feels slightly warm, and it covers your hand in a thin slimy layer that you quickly wipe off on your shirt\n");
                     TypeLine(">Leave");
@@ -105,7 +105,7 @@ namespace Josiahs_Wonderful_World
                     
                 }
 
-                else if (Answer == "Leave")
+                else if (Answer.ToUpper() == "Leave".ToUpper())
                 {
                     PrintMainArea();
                 }
@@ -118,7 +118,7 @@ namespace Josiahs_Wonderful_World
 
            
 
-            if (Answer.ToUpper() == "THE BATHROOM")
+            if (Answer.ToUpper() == "The bathroom".ToUpper())
             {
                 Type("The walls have smiling");
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -134,7 +134,7 @@ namespace Josiahs_Wonderful_World
 
                 Answer = Console.ReadLine();
 
-                if (Answer == "Inspect what's in the toilet")
+                if (Answer.ToUpper() == "Inspect what's in the toilet".ToUpper())
                 {
                     TypeLine("It appears to be some kind of office key\n");
                     TypeLine("Where could it lead? You wonder\n");
@@ -143,7 +143,7 @@ namespace Josiahs_Wonderful_World
 
                     Answer = Console.ReadLine();
 
-                    if (Answer == "Leave")
+                    if (Answer.ToUpper() == "Leave".ToUpper())
                     {
                         PrintMainArea();
                     }
@@ -151,7 +151,7 @@ namespace Josiahs_Wonderful_World
                     Answer= Console.ReadLine();
                 }
 
-                else if (Answer == "Leave")
+                else if (Answer.ToUpper() == "Leave".ToUpper())
                 {
                     PrintMainArea();
                 }
@@ -159,7 +159,7 @@ namespace Josiahs_Wonderful_World
              
             }
 
-            if (Answer == "The silent room")
+            if (Answer.ToUpper() == "The silent room".ToUpper())
             {
                 TypeLine("The walls, ceiling, and floor are covered in white pads that remind you of mattresses\n");
                 Type("There are small dark ");
@@ -175,7 +175,7 @@ namespace Josiahs_Wonderful_World
 
                 Answer = Console.ReadLine();
 
-                if (Answer == "Leave")
+                if (Answer.ToUpper() == "Leave".ToUpper())
                 {
                     PrintMainArea();
                 }
@@ -184,7 +184,7 @@ namespace Josiahs_Wonderful_World
             }
         
         
-            if (Answer == "The hallway")
+            if (Answer.ToUpper() == "The hallway".ToUpper())
             {
                 Type("As you stand in the middle of the hall, you look up at the ");
                 Console.ForegroundColor= ConsoleColor.Green;
@@ -225,7 +225,7 @@ namespace Josiahs_Wonderful_World
 
                 Answer = Console.ReadLine();
 
-                if (Answer == "The main office")
+                if (Answer.ToUpper() == "The main office".ToUpper())
                 {
                     TypeLine("You try the handle to the door but it doesn't budge\n");
                     TypeLine("You look into the office window and see an old dusty computer and keyboard sitting on a desk, as well as two filing cabinets with drawers in disarray\n");
@@ -238,7 +238,7 @@ namespace Josiahs_Wonderful_World
 
                         Answer = Console.ReadLine();
 
-                        if (Answer == "Yes")
+                        if (Answer.ToUpper() == "Yes".ToUpper())
                         {
                             TypeLine("The key slides into the handle with minimal effort, and the door unlocks as you turn the key and push open the door\n");
                             TypeLine("The office is covered in layers of thick dust that cause you to cough as you move inside\n");
@@ -251,7 +251,7 @@ namespace Josiahs_Wonderful_World
 
                             Answer = Console.ReadLine();
 
-                            if (Answer == "Yes")
+                            if (Answer.ToUpper() == "Yes".ToUpper())
                             {
                                 TypeLine("You search around the various filing cabinets and papers strewn across the floor\n");
                                 TypeLine("After a few minutes of searching, you find sticky note with the code 8372\n");
@@ -274,7 +274,7 @@ namespace Josiahs_Wonderful_World
                                 TypeLine(">The hallway across from you\n");
                             }
 
-                            else if (Answer == "No")
+                            else if (Answer.ToUpper() == "No".ToUpper())
                             {
                                 PrintLobby();
                             }
@@ -285,7 +285,7 @@ namespace Josiahs_Wonderful_World
                             }
                         }
 
-                        else if (Answer == "No")
+                        else if (Answer.ToUpper() == "No".ToUpper())
                         {
                             PrintLobby();
                         }
@@ -296,7 +296,7 @@ namespace Josiahs_Wonderful_World
                     {
                         TypeLine(">Leave");
 
-                        if (Answer == "Leave")
+                        if (Answer.ToUpper() == "Leave".ToUpper())
                         {
                             PrintLobby();
                         }
@@ -305,7 +305,7 @@ namespace Josiahs_Wonderful_World
                     }
                 }
             
-                else if (Answer == "The hallway across from you")
+                else if (Answer.ToUpper() == "The hallway across from you".ToUpper())
                 {
                     TypeLine("As you walk down the corridor you imagine the horrible things that happened here\n");
                     TypeLine("It must have been terrible being a child here\n");
@@ -343,17 +343,17 @@ namespace Josiahs_Wonderful_World
                 
                 }
             
-                else if (Answer == "The empty benches")
+                else if (Answer.ToUpper() == "The empty benches".ToUpper())
                 {
 
                 }
             
-                else if (Answer == "The front doors")
+                else if (Answer.ToUpper() == "The front doors".ToUpper())
                 {
 
                 }
 
-                else if (Answer == "Go back")
+                else if (Answer.ToUpper() == "Go back".ToUpper())
                 {
                     PrintMainArea();
                 }
