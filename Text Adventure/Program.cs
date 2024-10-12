@@ -1,5 +1,7 @@
 ﻿using static System.Net.Mime.MediaTypeNames;
 using System.Numerics;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Josiahs_Wonderful_World
 {
@@ -8,6 +10,9 @@ namespace Josiahs_Wonderful_World
     internal class Program
     {
         static bool HasKey = false;
+        static bool PowerOn = true;
+        static bool RedYellow = false;
+        static bool BlueGreen = false;
         // Makes a string named "line" and an int named "Delay" that has a default 50 millisecond sleep time
         static void Type(string line, int Delay = 0)
         {
@@ -268,10 +273,66 @@ namespace Josiahs_Wonderful_World
                                 Console.WriteLine("Everything is in chaos as the alarms are blaring and we have been forced to go on lockdown. As I am writing this, our numbers are quickly decreasing. If you are reading this, I’m already dead, and the experiment has failed. Maybe one day somebody will succeed where we have failed. I wonder what awaits me in the great beyond. After all I’ve done, it surely can’t be anything good. God help us now.\n");
                                 TypeLine("You knew that there was no hope for this place, but a part of you deep down still hoped there was a chance that your boy was still out there\n");
                                 TypeLine("Just as a tear slides down your cheek slowly, the power goes out and you can’t see a thing\n");
+                                PowerOn = false;
                                 TypeLine("Luckily you came prepared for this with an industrial flashlight on your hip\n");
                                 TypeLine("You leave the office, trying not to trip over anything in the dark\n");
                                 TypeLine("Where would you like to go?\n");
                                 TypeLine(">The hallway across from you\n");
+
+                                Answer = Console.ReadLine();
+
+                                (PowerOn == false && Answer.ToUpper() == "The hallway across from you".ToUpper())
+                                {
+                                    TypeLine("As you walk down the long corridor, you swear you see a face in the darkness, but after you blink it’s gone\n");
+                                    TypeLine("Your mind must be playing tricks on you\n");
+                                    TypeLine("There are several barricaded rooms and a window above you that casts pale moonlight onto the ground\n");
+                                    TypeLine("One door is untouched, and has a label beside it that reads “electrical room”\n");
+                                    TypeLine("Go inside the electrical room\n");
+
+                                    Answer = Console.ReadLine();
+
+                                    if (Answer.ToUpper() == "Go inside the electrical room".ToUpper())
+                                    {
+                                        TypeLine("The electrical room is really more of a closet\n");
+                                        TypeLine("Inside is a few mops and brooms and other custodial objects that the janitor would use\n");
+                                        TypeLine("On the wall is the electrical box\n");
+                                        TypeLine("You walk over to it, and as you open the cover sparks spray out and scatter across the floor\n");
+                                        TypeLine("It looks like somebody messed up the wires, you need to reconnect them in order to get the power back up and running\n");
+                                        TypeLine("Beside the electrical box is a sticky note that says “Remember, red to yellow, and blue to green. Don’t mess it up!”\n");
+                                        TypeLine("It’s signed by a man named Marv\n");
+                                        TypeLine("What wires do you want to connect?\n");
+                                        TypeLine(">Red to green\n");
+                                        TypeLine(">Red to yellow\n");
+                                        TypeLine(">Red to blue\n");
+                                        TypeLine(">Blue to yellow\n");
+                                        TypeLine(">Blue to red\n");
+                                        TypeLine(">Blue to green\n");
+
+                                        Answer = Console.ReadLine();
+
+                                        if (Answer.ToUpper() == "Red to green\n")
+                                        {
+
+                                        }
+
+                                        else if (Answer.ToUpper() == "Red to yellow".ToUpper())
+                                        {
+                                            RedYellow = true;
+                                            TypeLine("The wires connected successfully");
+                                            TypeLine(">Connect blue to green");
+                                            
+                                            Answer= Console.ReadLine();
+
+                                            if (Answer.ToUpper() == "Connect blue to green".ToUpper())
+                                            {
+                                                BlueGreen = true;
+                                                TypeLine("The wires connected successfully");
+
+                                            }
+                                        }
+                                    }
+                                }
+
                             }
 
                             else if (Answer.ToUpper() == "No".ToUpper())
@@ -318,6 +379,7 @@ namespace Josiahs_Wonderful_World
 
                     Answer = Console.ReadLine();
 
+                    
                     if (Answer == "Enter the electrical room")
                     {
                         TypeLine("The electrical room is really more of a closet\n");
@@ -345,14 +407,23 @@ namespace Josiahs_Wonderful_World
             
                 else if (Answer.ToUpper() == "The empty benches".ToUpper())
                 {
+                    TypeLine("You walk over to the blue hard plastic benches and take a seat\n");
+                    Type("Beside you is a ");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Type("lime green");
+                    TypeLine(" book titled “How to Talk To Kids So They Will Listen and How To Listen So Kids Will Talk”\n");
+                    TypeLine("I guess the doctors here didn't know how to get the kids to cooperate, you think");
+                    TypeLine("<Leave");
 
+                    if (Answer.ToUpper() == "Leave".ToUpper())
+                    {
+                        PrintLobby();
+                    }
                 }
-            
                 else if (Answer.ToUpper() == "The front doors".ToUpper())
                 {
 
                 }
-
                 else if (Answer.ToUpper() == "Go back".ToUpper())
                 {
                     PrintMainArea();
