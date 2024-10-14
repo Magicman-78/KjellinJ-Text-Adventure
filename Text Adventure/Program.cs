@@ -79,23 +79,20 @@ namespace Josiahs_Wonderful_World
         static void PrintQuestion()
         {
             TypeLine("What wires do you want to connect?\n");
-            TypeLine(">Red to green\n");
-            TypeLine(">Red to yellow\n");
-            TypeLine(">Red to blue\n");
-            TypeLine(">Blue to yellow\n");
-            TypeLine(">Blue to red\n");
-            TypeLine(">Blue to green\n");
+            Console.ForegroundColor(ConsoleColor.Red);
+            Type(">Red \n");
+            Console.ForegroundColor(ConsoleColor.White);
+            Type("to ");
+            Type(">Red to yellow\n");
+            Type(">Red to blue\n");
+            Type(">Blue to yellow\n");
+            Type(">Blue to red\n");
+            Type(">Blue to green\n");
         }
         static void PrintWires()
         {
             string Answer = Console.ReadLine();
-            TypeLine("What wires do you want to connect?\n");
-            TypeLine(">Red to green\n");
-            TypeLine(">Red to yellow\n");
-            TypeLine(">Red to blue\n");
-            TypeLine(">Blue to yellow\n");
-            TypeLine(">Blue to red\n");
-            TypeLine(">Blue to green\n");
+            PrintQuestion();
 
 
             Answer = Console.ReadLine();
