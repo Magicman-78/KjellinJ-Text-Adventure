@@ -2,6 +2,7 @@
 using System.Numerics;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Josiahs_Wonderful_World
 {
@@ -70,9 +71,12 @@ namespace Josiahs_Wonderful_World
             TypeLine(">The hallway across from you\n");
             TypeLine(">The empty benches\n");
             TypeLine(">The front doors\n");
+            TypeLine(">Back to the other hallway\n");
+
+            LobbyAnswers();
         }
 
-        static void PrintWires()
+        static void PrintQuestion()
         {
             TypeLine("What wires do you want to connect?\n");
             TypeLine(">Red to green\n");
@@ -82,10 +86,120 @@ namespace Josiahs_Wonderful_World
             TypeLine(">Blue to red\n");
             TypeLine(">Blue to green\n");
         }
-        static void Main(string[] args)
+        static void PrintWires()
         {
-            Console.Title = ("Josiah's Wonderful World");
+            string Answer = Console.ReadLine();
+            TypeLine("What wires do you want to connect?\n");
+            TypeLine(">Red to green\n");
+            TypeLine(">Red to yellow\n");
+            TypeLine(">Red to blue\n");
+            TypeLine(">Blue to yellow\n");
+            TypeLine(">Blue to red\n");
+            TypeLine(">Blue to green\n");
 
+
+            Answer = Console.ReadLine();
+
+            if (Answer.ToUpper() == "Red to yellow".ToUpper())
+            {
+                RedYellow = true;
+                TypeLine("The wires connected successfully\n");
+                PrintQuestion();
+
+                Answer = Console.ReadLine();
+            }
+
+            else if (Answer.ToUpper() == "Blue to green".ToUpper())
+            {
+                BlueGreen = true;
+                TypeLine("The wires connected successfully\n");
+                PrintQuestion();
+
+                Answer = Console.ReadLine();
+
+            }
+
+            if (RedYellow == true && BlueGreen == true)
+            {
+                TypeLine("The lights flicker back on with a bright buzzing white light that hurts your eyes after being in the dark for so long\n");
+                TypeLine("You turn around and walk out into the hall\n");
+                TypeLine("For some reason the lights down the hall aren’t on\n");
+                TypeLine(">Walk forward\n");
+
+                Answer = Console.ReadLine();
+
+                if (Answer.ToUpper() == "Walk forward".ToUpper())
+                {
+                    TypeLine("At the end of the hall you see a small face that has the soft and delicate features of a child\n");
+                    TypeLine("You try to shine your light on it, but all it does is cause the small beady eyes that stare at you to glimmer in the light\n");
+                    TypeLine(">Walk forward\n");
+
+                    Answer = Console.ReadLine();
+
+                    if (Answer.ToUpper() == "Walk forward".ToUpper())
+                    {
+                        TypeLine("The face gets larger and more clear as you continue down the darkened hall\n");
+                        TypeLine("The stare from whatever is down there feels oddly familiar, as if you've felt it before\n");
+                        TypeLine(">Walk forward\n");
+
+                        Answer = Console.ReadLine();
+
+                        if (Answer.ToUpper() == "Walk forward".ToUpper())
+                        {
+                            TypeLine("The face is now bigger than ever, only a few feet away from you\n");
+                            TypeLine("The face seems to recognize you, but you're still trying to think where you've seen it before\n");
+                            TypeLine("Even this close up it's hard to see all the features\n");
+                            TypeLine("Finally you recognize it\n");
+                            TypeLine("How could you ever forget this precious face that you came here in search of\n");
+                            TypeLine("You try to walk closer to it, but the face disappears into the darkness\n");
+                            TypeLine("What do you want to do now?\n");
+                            TypeLine(">Leave this place for good (Leave)\n");
+
+                            Answer = Console.ReadLine();
+
+                            if (Answer.ToUpper() == "Leave".ToUpper())
+                            {
+                                TypeLine("You charge through the flimsy boards that covered the broken doors to make an easy exit\n");
+                                TypeLine("As you walk outside and brush off the wood pieces, you’re greeted by the cold fall air and the bright sun\n");
+                                TypeLine("Your eyes adjust to the light and you walk over to your company van\n");
+                                TypeLine("You climb into the driver’s seat and sit there thinking over the things you’ve learned\n");
+                                TypeLine(">Go home\n");
+
+                                Answer = Console.ReadLine();
+
+                                if (Answer.ToUpper() == "Go home".ToUpper())
+                                {
+                                    TypeLine("You turn the key into the ignition and the van hums to life with a loud roar like a lion\n");
+                                    TypeLine("A part of you will never be the same after this\n");
+                                    TypeLine("But in time you learn to move on with your life and forget about these events\n");
+                                    TypeLine("Now Mary's Sunny Haven sits, empty and rotting, though not completely alone\n");
+                                    TypeLine(">End game\n");
+
+                                    Answer = Console.ReadLine();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            else
+            {
+                TypeLine("1,000 volts charge through your body at once and your heart stops instantly\n");
+                TypeLine("You died by electrocution\n");
+                TypeLine(">Try again\n");
+
+                if (Answer.ToUpper() == "Try again".ToUpper())
+                {
+                    PrintQuestion();
+                    LobbyAnswers();
+                }
+            }
+        }
+
+
+        public static void MainArea()
+        {
             PrintMainMenu();
 
             string Answer = Console.ReadLine();
@@ -105,7 +219,7 @@ namespace Josiahs_Wonderful_World
 
                 Answer = Console.ReadLine();
 
-                if (Answer.ToUpper() == "Feel the wall".ToUpper()) 
+                if (Answer.ToUpper() == "Feel the wall".ToUpper())
                 {
                     TypeLine("You slide your hand against the wall. It feels slightly warm, and it covers your hand in a thin slimy layer that you quickly wipe off on your shirt\n");
                     TypeLine(">Leave");
@@ -118,12 +232,13 @@ namespace Josiahs_Wonderful_World
 
                         Answer = Console.ReadLine();
                     }
-                    
+
                 }
 
                 else if (Answer.ToUpper() == "Leave".ToUpper())
                 {
                     PrintMainArea();
+                    MainArea();
                 }
 
                 else
@@ -132,7 +247,7 @@ namespace Josiahs_Wonderful_World
                 }
             }
 
-           
+
 
             if (Answer.ToUpper() == "The bathroom".ToUpper())
             {
@@ -164,7 +279,7 @@ namespace Josiahs_Wonderful_World
                         PrintMainArea();
                     }
 
-                    Answer= Console.ReadLine();
+                    Answer = Console.ReadLine();
                 }
 
                 else if (Answer.ToUpper() == "Leave".ToUpper())
@@ -172,7 +287,7 @@ namespace Josiahs_Wonderful_World
                     PrintMainArea();
                 }
 
-             
+
             }
 
             if (Answer.ToUpper() == "The silent room".ToUpper())
@@ -195,15 +310,15 @@ namespace Josiahs_Wonderful_World
                 {
                     PrintMainArea();
                 }
-               
+
                 Answer = Console.ReadLine();
             }
-        
-        
+
+
             if (Answer.ToUpper() == "The hallway".ToUpper())
             {
                 Type("As you stand in the middle of the hall, you look up at the ");
-                Console.ForegroundColor= ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.Green;
                 Type("c");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Type("o");
@@ -237,199 +352,100 @@ namespace Josiahs_Wonderful_World
                 TypeLine(">The hallway across from you\n");
                 TypeLine(">The empty benches\n");
                 TypeLine(">The front doors\n");
-                TypeLine("Go back the other way\n");
+                TypeLine(">Back to the other hallway\n");
 
-                Answer = Console.ReadLine();
+                LobbyAnswers();
+            }
+        }
 
-                if (Answer.ToUpper() == "The main office".ToUpper())
+        public static void Main(string[] args)
+        {
+            Console.Title = ("Josiah's Wonderful World");
+            MainArea();
+        }
+
+        public static void LobbyAnswers()
+        {
+
+            string Answer = Console.ReadLine();
+
+            if (Answer.ToUpper() == "The main office".ToUpper())
+            {
+                TypeLine("You try the handle to the door but it doesn't budge\n");
+                TypeLine("You look into the office window and see an old dusty computer and keyboard sitting on a desk, as well as two filing cabinets with drawers in disarray\n");
+                TypeLine("Maybe there's a key around here somewhere?\n");
+
+                if (HasKey == true)
                 {
-                    TypeLine("You try the handle to the door but it doesn't budge\n");
-                    TypeLine("You look into the office window and see an old dusty computer and keyboard sitting on a desk, as well as two filing cabinets with drawers in disarray\n");
-                    TypeLine("Maybe there's a key around here somewhere?\n");
+                    TypeLine("You remember that you found a key inside that nasty bathroom\n");
+                    TypeLine("Try the key? (Yes or No)\n");
 
-                    if (HasKey == true)
+                    Answer = Console.ReadLine();
+
+                    if (Answer.ToUpper() == "Yes".ToUpper())
                     {
-                        TypeLine("You remember that you found a key inside that nasty bathroom\n");
-                        TypeLine("Try the key? (Yes or No)\n");
+                        TypeLine("The key slides into the handle with minimal effort, and the door unlocks as you turn the key and push open the door\n");
+                        TypeLine("The office is covered in layers of thick dust that cause you to cough as you move inside\n");
+                        TypeLine("The computer sitting atop the desk below the window looks as though it hasn't been touched in years, and it's extremely outdated\n");
+                        TypeLine("You press the button to turn the computer on, and to your surprise, it begins to light up with a dim blue color\n");
+                        TypeLine("The computer auto fills the username, but it looks like you need a password\n");
+                        TypeLine("You remember that the person who worked in the office never had a great memory\n");
+                        TypeLine("There should be a sticky note with the password around here somewhere\n");
+                        TypeLine("Look around? (Yes or No)\n");
 
                         Answer = Console.ReadLine();
 
                         if (Answer.ToUpper() == "Yes".ToUpper())
                         {
-                            TypeLine("The key slides into the handle with minimal effort, and the door unlocks as you turn the key and push open the door\n");
-                            TypeLine("The office is covered in layers of thick dust that cause you to cough as you move inside\n");
-                            TypeLine("The computer sitting atop the desk below the window looks as though it hasn't been touched in years, and it's extremely outdated\n");
-                            TypeLine("You press the button to turn the computer on, and to your surprise, it begins to light up with a dim blue color\n");
-                            TypeLine("The computer auto fills the username, but it looks like you need a password\n");
-                            TypeLine("You remember that the person who worked in the office never had a great memory\n");
-                            TypeLine("There should be a sticky note with the password around here somewhere\n");
-                            TypeLine("Look around? (Yes or No)\n");
+                            TypeLine("You search around the various filing cabinets and papers strewn across the floor\n");
+                            TypeLine("After a few minutes of searching, you find sticky note with the code 8372\n");
+                            TypeLine("You open the files on the computer’s desktop and see reports on the children that they kept here\n");
+                            TypeLine("This is what they say:\n");
+                            Console.WriteLine("Report #23");
+                            Console.WriteLine("4/21/88");
+                            Console.WriteLine("Patient number 2 has been exhibiting more and more dangerous behavior, and his health is rapidly deteriorating. He hasn’t been behaving well with the other kids and often starts fights. One time when another doctor came to visit him in his room, he tried to kill him with a colored pencil. The doctor was wounded in the neck and is still recovering.\n");
+                            Console.WriteLine("Report #30");
+                            Console.WriteLine("5/7/88");
+                            Console.WriteLine("The children are getting more and more out of control. They have all begun retaliating against us and won’t follow anything we say. It’s getting harder and harder to keep them in their rooms. I fear that they may overtake us soon, and at the time of writing this, it may be too late.\n");
+                            Console.WriteLine("Report #31");
+                            Console.WriteLine("5/7/88");
+                            Console.WriteLine("Everything is in chaos as the alarms are blaring and we have been forced to go on lockdown. As I am writing this, our numbers are quickly decreasing. If you are reading this, I’m already dead, and the experiment has failed. Maybe one day somebody will succeed where we have failed. I wonder what awaits me in the great beyond. After all I’ve done, it surely can’t be anything good. God help us now.\n");
+                            TypeLine("You knew that there was no hope for this place, but a part of you deep down still hoped there was a chance that your boy was still out there\n");
+                            TypeLine("Just as a tear slides down your cheek slowly, the power goes out and you can’t see a thing\n");
+                            TypeLine("Giant metal shutters slam down, blocking your exit through the main doors\n");
+                            PowerOn = false;
+                            TypeLine("Luckily you came prepared for this with an industrial flashlight on your hip\n");
+                            TypeLine("You leave the office, trying not to trip over anything in the dark\n");
+                            TypeLine("Where would you like to go?\n");
+                            TypeLine(">The hallway across from you\n");
 
                             Answer = Console.ReadLine();
 
-                            if (Answer.ToUpper() == "Yes".ToUpper())
+                            if (PowerOn == false && Answer.ToUpper() == "The hallway across from you".ToUpper())
                             {
-                                TypeLine("You search around the various filing cabinets and papers strewn across the floor\n");
-                                TypeLine("After a few minutes of searching, you find sticky note with the code 8372\n");
-                                TypeLine("You open the files on the computer’s desktop and see reports on the children that they kept here\n");
-                                TypeLine("This is what they say:\n");
-                                Console.WriteLine("Report #23");
-                                Console.WriteLine("4/21/88");
-                                Console.WriteLine("Patient number 2 has been exhibiting more and more dangerous behavior, and his health is rapidly deteriorating. He hasn’t been behaving well with the other kids and often starts fights. One time when another doctor came to visit him in his room, he tried to kill him with a colored pencil. The doctor was wounded in the neck and is still recovering.\n");
-                                Console.WriteLine("Report #30");
-                                Console.WriteLine("5/7/88");
-                                Console.WriteLine("The children are getting more and more out of control. They have all begun retaliating against us and won’t follow anything we say. It’s getting harder and harder to keep them in their rooms. I fear that they may overtake us soon, and at the time of writing this, it may be too late.\n");
-                                Console.WriteLine("Report #31");
-                                Console.WriteLine("5/7/88");
-                                Console.WriteLine("Everything is in chaos as the alarms are blaring and we have been forced to go on lockdown. As I am writing this, our numbers are quickly decreasing. If you are reading this, I’m already dead, and the experiment has failed. Maybe one day somebody will succeed where we have failed. I wonder what awaits me in the great beyond. After all I’ve done, it surely can’t be anything good. God help us now.\n");
-                                TypeLine("You knew that there was no hope for this place, but a part of you deep down still hoped there was a chance that your boy was still out there\n");
-                                TypeLine("Just as a tear slides down your cheek slowly, the power goes out and you can’t see a thing\n");
-                                TypeLine("Giant metal shutters slam down, blocking your exit through the main doors\n");
-                                PowerOn = false;
-                                TypeLine("Luckily you came prepared for this with an industrial flashlight on your hip\n");
-                                TypeLine("You leave the office, trying not to trip over anything in the dark\n");
-                                TypeLine("Where would you like to go?\n");
-                                TypeLine(">The hallway across from you\n");
+                                TypeLine("As you walk down the long corridor, you swear you see a face in the darkness, but after you blink it’s gone\n");
+                                TypeLine("Your mind must be playing tricks on you\n");
+                                TypeLine("There are several barricaded rooms and a window above you that casts pale moonlight onto the ground\n");
+                                TypeLine("One door is untouched, and has a label beside it that reads “electrical room”\n");
+                                TypeLine(">Go inside the electrical room\n");
 
                                 Answer = Console.ReadLine();
 
-                                if (PowerOn == false && Answer.ToUpper() == "The hallway across from you".ToUpper())
+                                if (Answer.ToUpper() == "Go inside the electrical room".ToUpper())
                                 {
-                                    TypeLine("As you walk down the long corridor, you swear you see a face in the darkness, but after you blink it’s gone\n");
-                                    TypeLine("Your mind must be playing tricks on you\n");
-                                    TypeLine("There are several barricaded rooms and a window above you that casts pale moonlight onto the ground\n");
-                                    TypeLine("One door is untouched, and has a label beside it that reads “electrical room”\n");
-                                    TypeLine("Go inside the electrical room\n");
-
-                                    Answer = Console.ReadLine();
-
-                                    if (Answer.ToUpper() == "Go inside the electrical room".ToUpper())
-                                    {
-                                        TypeLine("The electrical room is really more of a closet\n");
-                                        TypeLine("Inside is a few mops and brooms and other custodial objects that the janitor would use\n");
-                                        TypeLine("On the wall is the electrical box\n");
-                                        TypeLine("You walk over to it, and as you open the cover sparks spray out and scatter across the floor\n");
-                                        TypeLine("It looks like somebody messed up the wires, you need to reconnect them in order to get the power back up and running\n");
-                                        TypeLine("Beside the electrical box is a sticky note that says “Remember, red to yellow, and blue to green. Don’t mess it up!”\n");
-                                        TypeLine("It’s signed by a man named Marv\n");
-                                        TypeLine("What wires do you want to connect?\n");
-                                        TypeLine(">Red to green\n");
-                                        TypeLine(">Red to yellow\n");
-                                        TypeLine(">Red to blue\n");
-                                        TypeLine(">Blue to yellow\n");
-                                        TypeLine(">Blue to red\n");
-                                        TypeLine(">Blue to green\n");
-
-                                        Answer = Console.ReadLine();
-
-                                        if (Answer.ToUpper() == "Red to yellow".ToUpper())
-                                        {
-                                            RedYellow = true;
-                                            TypeLine("The wires connected successfully\n");
-                                            PrintWires();
-
-                                            Answer = Console.ReadLine();
-                                        }
-
-                                        else if (Answer.ToUpper() == "Connect blue to green".ToUpper())
-                                        {
-                                            BlueGreen = true;
-                                            TypeLine("The wires connected successfully\n");
-                                            PrintWires();
-
-                                            Answer = Console.ReadLine();
-                                        }
-
-                                        else
-                                        {
-                                            TypeLine("1,000 volts charge through your body at once and your heart stops instantly\n");
-                                            TypeLine("You died by electrocution\n");
-                                            TypeLine(">Try again\n");
-
-                                            if (Answer.ToUpper() == "Try again".ToUpper())
-                                            {
-                                                PrintWires();
-                                            }
-                                        }
-
-                                        if (RedYellow == true && BlueGreen == true)
-                                        {
-                                            TypeLine("The lights flicker back on with a bright buzzing white light that hurts your eyes after being in the dark for so long\n");
-                                            TypeLine("You turn around and walk out into the hall\n");
-                                            TypeLine("For some reason the lights down the hall aren’t on\n");
-                                            TypeLine(">Walk forward\n");
-
-                                            Answer = Console.ReadLine();
-
-                                            if (Answer.ToUpper() == "Walk forward".ToUpper())
-                                            {
-                                                TypeLine("At the end of the hall you see a small face that has the soft and delicate features of a child\n");
-                                                TypeLine("You try to shine your light on it, but all it does is cause the small beady eyes that stare at you to glimmer in the light\n");
-                                                TypeLine(">Walk forward\n");
-
-                                                Answer = Console.ReadLine();
-
-                                                if (Answer.ToUpper() == "Walk forward".ToUpper())
-                                                {
-                                                    TypeLine("The face gets larger and more clear as you continue down the darkened hall\n");
-                                                    TypeLine("The stare from whatever is down there feels oddly familiar, as if you've felt it before\n");
-                                                    TypeLine(">Walk forward\n");
-
-                                                    Answer = Console.ReadLine();
-
-                                                    if (Answer.ToUpper() == "Walk forward".ToUpper())
-                                                    {
-                                                        TypeLine("The face is now bigger than ever, only a few feet away from you\n");
-                                                        TypeLine("The face seems to recognize you, but you're still trying to think where you've seen it before\n");
-                                                        TypeLine("Even this close up it's hard to see all the features\n");
-                                                        TypeLine("Finally you recognize it\n");
-                                                        TypeLine("How could you ever forget this precious face that you came here in search of\n");
-                                                        TypeLine("You try to walk closer to it, but the face disappears into the darkness\n");
-                                                        TypeLine("What do you want to do now?\n");
-                                                        TypeLine(">Leave this place for good (Leave)\n");
-
-                                                        Answer = Console.ReadLine();
-
-                                                        if (Answer.ToUpper() == "Leave".ToUpper())
-                                                        {
-                                                            TypeLine("You charge through the flimsy boards that covered the broken doors to make an easy exit\n");
-                                                            TypeLine("As you walk outside and brush off the wood pieces, you’re greeted by the cold fall air and the bright sun\n");
-                                                            TypeLine("Your eyes adjust to the light and you walk over to your company van\n");
-                                                            TypeLine("You climb into the driver’s seat and sit there thinking over the things you’ve learned\n");
-                                                            TypeLine(">Go home\n");
-
-                                                            Answer = Console.ReadLine();
-
-                                                            if (Answer.ToUpper() == "Go home".ToUpper())
-                                                            {
-                                                                TypeLine("You turn the key into the ignition and the van hums to life with a loud roar like a lion\n");
-                                                                TypeLine("A part of you will never be the same after this\n");
-                                                                TypeLine("But in time you learn to move on with your life and forget about these events\n");
-                                                                TypeLine("Now Mary's Sunny Haven sits, empty and rotting, though not completely alone\n");
-                                                                TypeLine(">End game\n");
-
-                                                                Answer = Console.ReadLine();
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                    
+                                    TypeLine("The electrical room is really more of a closet\n");
+                                    TypeLine("Inside is a few mops and brooms and other custodial objects that the janitor would use\n");
+                                    TypeLine("On the wall is the electrical box\n");
+                                    TypeLine("You walk over to it, and as you open the cover sparks spray out and scatter across the floor\n");
+                                    TypeLine("It looks like somebody messed up the wires, you need to reconnect them in order to get the power back up and running\n");
+                                    TypeLine("Beside the electrical box is a sticky note that says “Remember, red to yellow, and blue to green. Don’t mess it up!”\n");
+                                    TypeLine("It’s signed by a man named Marv\n");
+                                    TypeLine("(Press enter to continue)\n");
+                                    PrintWires();
                                 }
-
+                                 
                             }
 
-                            else if (Answer.ToUpper() == "No".ToUpper())
-                            {
-                                PrintLobby();
-                            }
-
-                            else
-                            {
-                                SnarkyRemark();
-                            }
                         }
 
                         else if (Answer.ToUpper() == "No".ToUpper())
@@ -437,72 +453,55 @@ namespace Josiahs_Wonderful_World
                             PrintLobby();
                         }
 
-                    }
-
-                    else if (HasKey == false)
-                    {
-                        TypeLine(">Leave\n");
-
-                        Answer = Console.ReadLine();
-
-                        if (Answer.ToUpper() == "Leave".ToUpper())
+                        else
                         {
-                            PrintLobby();
-
-                            Answer = Console.ReadLine();
-                        }
-                        
-                    }
-                }
-            
-                else if (PowerOn == true && Answer.ToUpper() == "The hallway across from you".ToUpper())
-                {
-                    TypeLine("As you walk down the corridor you imagine the horrible things that happened here\n");
-                    TypeLine("It must have been terrible being a child here\n");
-                    TypeLine("You feel ashamed for ever leaving your kid here\n");
-                    TypeLine("When you reach the end of the hall, there are several barricaded rooms and a window above you that casts pale moonlight onto the ground\n");
-                    TypeLine("One door is untouched, and has a label beside it that reads “electrical room”\n");
-                    TypeLine("What do you want to do?\n");
-                    TypeLine(">Enter the electrical room\n");
-                    TypeLine(">Go back to the lobby\n");
-
-                    Answer = Console.ReadLine();
-
-                    
-                    if (Answer == "Enter the electrical room")
-                    {
-                        TypeLine("The electrical room is really more of a closet\n");
-                        TypeLine("Inside is a few mops and brooms and other custodial objects that the janitor would use\n");
-                        TypeLine("On the wall is the electrical box\n");
-                        TypeLine("You open it up and everything seems to be fine with it\n");
-                        TypeLine("What would you like to do?\n");
-                        TypeLine(">Leave\n");
-
-                        Answer = Console.ReadLine();
-
-                        if (Answer.ToUpper() == "Leave".ToUpper())
-                        {
-                            PrintLobby();
+                            SnarkyRemark();
                         }
                     }
 
-                    else if (Answer == "Go back to the lobby")
+                    else if (Answer.ToUpper() == "No".ToUpper())
                     {
                         PrintLobby();
                     }
-                    
+
                 }
-            
-                else if (Answer.ToUpper() == "The empty benches".ToUpper())
+
+                else if (HasKey == false)
                 {
-                    TypeLine("You walk over to the blue hard plastic benches and take a seat\n");
-                    Type("Beside you is a ");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Type("lime green");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    TypeLine(" book titled “How to Talk To Kids So They Will Listen and How To Listen So Kids Will Talk”\n");
-                    TypeLine("I guess the doctors here didn't know how to get the kids to cooperate, you think");
-                    TypeLine("<Leave");
+                    TypeLine(">Leave\n");
+
+                    Answer = Console.ReadLine();
+
+                    if (Answer.ToUpper() == "Leave".ToUpper())
+                    {
+                        PrintLobby();
+                    }
+
+                }
+            }
+
+            else if (PowerOn == true && Answer.ToUpper() == "The hallway across from you".ToUpper())
+            {
+                TypeLine("As you walk down the corridor you imagine the horrible things that happened here\n");
+                TypeLine("It must have been terrible being a child here\n");
+                TypeLine("You feel ashamed for ever leaving your kid here\n");
+                TypeLine("When you reach the end of the hall, there are several barricaded rooms and a window above you that casts pale moonlight onto the ground\n");
+                TypeLine("One door is untouched, and has a label beside it that reads “electrical room”\n");
+                TypeLine("What do you want to do?\n");
+                TypeLine(">Enter the electrical room\n");
+                TypeLine(">Go back to the lobby\n");
+
+                Answer = Console.ReadLine();
+
+
+                if (Answer.ToUpper() == "Enter the electrical room".ToUpper())
+                {
+                    TypeLine("The electrical room is really more of a closet\n");
+                    TypeLine("Inside is a few mops and brooms and other custodial objects that the janitor would use\n");
+                    TypeLine("On the wall is the electrical box\n");
+                    TypeLine("You open it up and everything seems to be fine with it\n");
+                    TypeLine("What would you like to do?\n");
+                    TypeLine(">Leave\n");
 
                     Answer = Console.ReadLine();
 
@@ -512,26 +511,56 @@ namespace Josiahs_Wonderful_World
                     }
                 }
 
-                else if (Answer.ToUpper() == "The front doors".ToUpper())
+                else if (Answer == "Go back to the lobby")
                 {
-                    TypeLine("The front doors are barricaded with thin wooden boards so that on the outside of the building it looks like you can't get in\n");
-                    TypeLine("With a little muscle, you could get through the boards easily\n");
-                    TypeLine("Good thing you knew about the vents that lead into this place, you thought\n");
-                    TypeLine(">Turn around\n");
-                    
-                    Answer = Console.ReadLine();
-
-                    if (Answer.ToUpper() == "Turn around".ToUpper())
-                    {
-                        PrintLobby();
-                    }
+                    PrintLobby();
                 }
 
-                else if (Answer.ToUpper() == "Go back".ToUpper())
-                {
-                    PrintMainArea();
-                }
+            }
 
+            else if (Answer.ToUpper() == "The empty benches".ToUpper())
+            {
+                TypeLine("You walk over to the blue hard plastic benches and take a seat\n");
+                Type("Beside you is a ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Type("lime green");
+                Console.ForegroundColor = ConsoleColor.White;
+                TypeLine(" book titled “How to Talk To Kids So They Will Listen and How To Listen So Kids Will Talk”\n");
+                TypeLine("I guess the doctors here didn't know how to get the kids to cooperate, you think");
+                TypeLine("<Leave");
+
+                Answer = Console.ReadLine();
+
+                if (Answer.ToUpper() == "Leave".ToUpper())
+                {
+                    PrintLobby();
+                }
+            }
+
+            else if (Answer.ToUpper() == "The front doors".ToUpper())
+            {
+                TypeLine("The front doors are barricaded with thin wooden boards so that on the outside of the building it looks like you can't get in\n");
+                TypeLine("With a little muscle, you could get through the boards easily\n");
+                TypeLine("Good thing you knew about the vents that lead into this place, you thought\n");
+                TypeLine(">Turn around\n");
+
+                Answer = Console.ReadLine();
+
+                if (Answer.ToUpper() == "Turn around".ToUpper())
+                {
+                    PrintLobby();
+                }
+            }
+
+            else if (Answer.ToUpper() == "Go back".ToUpper())
+            {
+                PrintMainArea();
+            }
+
+            else if (Answer.ToUpper() == "Back to the other hallway".ToUpper())
+            {
+                PrintMainArea();
+                MainArea();
             }
         }
     }
