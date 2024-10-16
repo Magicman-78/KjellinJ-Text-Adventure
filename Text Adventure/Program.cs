@@ -61,6 +61,18 @@ namespace Josiahs_Wonderful_World
             return true;
         }
 
+        // This code makes the Output be replaced with the current code for the main office's computer
+        public static string PrintCode()
+        {
+            string Output = "";
+
+            for (int i = 0; i < Code.Length; ++i)
+            {
+                Output += Code[i];
+            } 
+            return Output;
+        }
+
         public static void Main(string[] args)
         {
             Random random = new Random();
@@ -308,14 +320,9 @@ namespace Josiahs_Wonderful_World
                         if (Answer.ToUpper() == "Yes".ToUpper())
                         {
                             TypeLine("You search around the various filing cabinets and papers strewn across the floor\n");
-                            TypeLine("After a few minutes of searching, you find sticky note with the code ");
-                            //Write code to make for loop to print the current code
-                            
-                            for Code[i] = TypeLine()
+                            TypeLine("After a few minutes of searching, you find sticky note with the code "+PrintCode()+"\n");
 
-                            bool IsCorrect = ComputerCode();
-
-                            if (IsCorrect)
+                            if (ComputerCode() == true)
                             {
                                 TypeLine("You open the files on the computer’s desktop and see reports on the children that they kept here\n");
                                 TypeLine("This is what they say:\n");
