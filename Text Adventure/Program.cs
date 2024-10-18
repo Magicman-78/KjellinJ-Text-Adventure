@@ -14,6 +14,7 @@ namespace Josiahs_Wonderful_World
         static bool PowerOn = true;
         static bool RedYellow = false;
         static bool BlueGreen = false;
+
         // Makes a string named "line" and an int named "Delay" that has a default 50 millisecond sleep time
         static void Type(string line, int Delay = 0)
         {
@@ -75,6 +76,7 @@ namespace Josiahs_Wonderful_World
 
         public static void Main(string[] args)
         {
+            string Answer = Console.ReadLine();
             Random random = new Random();
 
             // This loop will run for as many numbers there are in the code
@@ -83,10 +85,9 @@ namespace Josiahs_Wonderful_World
                 // Generate a random number for the current int
                 Code[i] = random.Next(0, 10);
             }
-            
+
 
             Console.Title = ("Josiah's Wonderful World");
-            MainArea();
         }
 
         static void SnarkyRemark()
@@ -102,7 +103,6 @@ namespace Josiahs_Wonderful_World
             TypeLine("> The bathroom\n");
             TypeLine("> The silent room\n");
             TypeLine("> The hallway\n");
-
         }
 
         static void PrintMainArea()
@@ -116,11 +116,10 @@ namespace Josiahs_Wonderful_World
 
         public static void MainArea()
         {
-            PrintMainMenu();
 
             string Answer = Console.ReadLine();
 
-            if (Answer.ToUpper() == "The squishy room".ToUpper().ToUpper())
+            if (Answer.ToUpper().Trim() == "The squishy room".ToUpper())
             {
                 Type("The walls and floor are covered in squishy moist");
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -165,7 +164,7 @@ namespace Josiahs_Wonderful_World
 
 
 
-            if (Answer.ToUpper() == "The bathroom".ToUpper())
+            else if (Answer.ToUpper() == "The bathroom".ToUpper())
             {
                 Type("The walls have smiling");
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -206,7 +205,7 @@ namespace Josiahs_Wonderful_World
 
             }
 
-            if (Answer.ToUpper() == "The silent room".ToUpper())
+            else if (Answer.ToUpper() == "The silent room".ToUpper())
             {
                 TypeLine("The walls, ceiling, and floor are covered in white pads that remind you of mattresses\n");
                 Type("There are small dark ");
@@ -231,7 +230,7 @@ namespace Josiahs_Wonderful_World
             }
 
 
-            if (Answer.ToUpper() == "The hallway".ToUpper())
+            else if (Answer.ToUpper() == "The hallway".ToUpper())
             {
                 Type("As you stand in the middle of the hall, you look up at the ");
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -271,6 +270,14 @@ namespace Josiahs_Wonderful_World
                 TypeLine(">Back to the other hallway\n");
 
                 LobbyAnswers();
+            }
+
+            else
+            {
+                SnarkyRemark();
+                MainArea();
+
+                Answer = Console.ReadLine();
             }
         }
 
@@ -320,7 +327,7 @@ namespace Josiahs_Wonderful_World
                         if (Answer.ToUpper() == "Yes".ToUpper())
                         {
                             TypeLine("You search around the various filing cabinets and papers strewn across the floor\n");
-                            TypeLine("After a few minutes of searching, you find sticky note with the code "+PrintCode()+"\n");
+                            TypeLine("After a few minutes of searching, you find sticky note with the code " + PrintCode() + "\n");
 
                             if (ComputerCode() == true)
                             {
