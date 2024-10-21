@@ -76,6 +76,8 @@ namespace Josiahs_Wonderful_World
 
         public static void Main(string[] args)
         {
+            PrintMainMenu();
+            MainArea();
             string Answer = Console.ReadLine();
             Random random = new Random();
 
@@ -105,7 +107,7 @@ namespace Josiahs_Wonderful_World
             TypeLine("> The hallway\n");
         }
 
-        static void PrintMainArea()
+        static void MainAreaQuestion()
         {
             TypeLine("Where would you like to go?\n");
             TypeLine("> The squishy room\n");
@@ -116,7 +118,6 @@ namespace Josiahs_Wonderful_World
 
         public static void MainArea()
         {
-
             string Answer = Console.ReadLine();
 
             if (Answer.ToUpper().Trim() == "The squishy room".ToUpper())
@@ -143,7 +144,7 @@ namespace Josiahs_Wonderful_World
 
                     if (Answer == "Leave")
                     {
-                        PrintMainArea();
+                        MainAreaQuestion();
 
                         Answer = Console.ReadLine();
                     }
@@ -152,7 +153,7 @@ namespace Josiahs_Wonderful_World
 
                 else if (Answer.ToUpper() == "Leave".ToUpper())
                 {
-                    PrintMainArea();
+                    MainAreaQuestion();
                     MainArea();
                 }
 
@@ -161,8 +162,6 @@ namespace Josiahs_Wonderful_World
                     SnarkyRemark();
                 }
             }
-
-
 
             else if (Answer.ToUpper() == "The bathroom".ToUpper())
             {
@@ -191,7 +190,7 @@ namespace Josiahs_Wonderful_World
 
                     if (Answer.ToUpper() == "Leave".ToUpper())
                     {
-                        PrintMainArea();
+                        MainAreaQuestion();
                     }
 
                     Answer = Console.ReadLine();
@@ -199,7 +198,7 @@ namespace Josiahs_Wonderful_World
 
                 else if (Answer.ToUpper() == "Leave".ToUpper())
                 {
-                    PrintMainArea();
+                    MainAreaQuestion();
                 }
 
 
@@ -223,7 +222,7 @@ namespace Josiahs_Wonderful_World
 
                 if (Answer.ToUpper() == "Leave".ToUpper())
                 {
-                    PrintMainArea();
+                    MainAreaQuestion();
                 }
 
                 Answer = Console.ReadLine();
@@ -380,7 +379,8 @@ namespace Josiahs_Wonderful_World
 
                             else
                             {
-
+                                TypeLine("Incorrect password");
+                                LobbyAnswers();
                             }
                         }
 
@@ -392,6 +392,7 @@ namespace Josiahs_Wonderful_World
                         else
                         {
                             SnarkyRemark();
+
                         }
                     }
 
@@ -490,17 +491,17 @@ namespace Josiahs_Wonderful_World
 
             else if (Answer.ToUpper() == "Go back".ToUpper())
             {
-                PrintMainArea();
+                MainAreaQuestion();
             }
 
             else if (Answer.ToUpper() == "Back to the other hallway".ToUpper())
             {
-                PrintMainArea();
+                MainAreaQuestion();
                 MainArea();
             }
         }
 
-        static void PrintQuestion()
+        static void WiresQuestion()
         {
             TypeLine("What wires do you want to connect?\n");
             Console.ForegroundColor = ConsoleColor.Red;
@@ -544,7 +545,7 @@ namespace Josiahs_Wonderful_World
         static void PrintWires()
         {
             string Answer = Console.ReadLine();
-            PrintQuestion();
+            WiresQuestion();
 
 
             Answer = Console.ReadLine();
@@ -553,7 +554,7 @@ namespace Josiahs_Wonderful_World
             {
                 RedYellow = true;
                 TypeLine("The wires connected successfully\n");
-                PrintQuestion();
+                WiresQuestion();
 
                 Answer = Console.ReadLine();
             }
@@ -640,8 +641,8 @@ namespace Josiahs_Wonderful_World
 
                 if (Answer.ToUpper() == "Try again".ToUpper())
                 {
-                    PrintQuestion();
-                    LobbyAnswers();
+                    WiresQuestion();
+                    PrintWires();
                 }
             }
         }
