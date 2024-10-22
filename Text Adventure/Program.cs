@@ -101,10 +101,10 @@ namespace Josiahs_Wonderful_World
         {
             TypeLine("Hello! And welcome to Josiah's Wonderful World!\n");
             TypeLine("Where would you like to go?\n");
-            TypeLine("> The squishy room\n");
-            TypeLine("> The bathroom\n");
-            TypeLine("> The silent room\n");
-            TypeLine("> The hallway\n");
+            TypeLine(">The squishy room\n");
+            TypeLine(">The bathroom\n");
+            TypeLine(">The silent room\n");
+            TypeLine(">The hallway\n");
         }
 
         static void MainAreaQuestion()
@@ -145,6 +145,7 @@ namespace Josiahs_Wonderful_World
                     if (Answer == "Leave")
                     {
                         MainAreaQuestion();
+                        MainArea();
 
                         Answer = Console.ReadLine();
                     }
@@ -191,6 +192,7 @@ namespace Josiahs_Wonderful_World
                     if (Answer.ToUpper() == "Leave".ToUpper())
                     {
                         MainAreaQuestion();
+                        MainArea();
                     }
 
                     Answer = Console.ReadLine();
@@ -199,7 +201,9 @@ namespace Josiahs_Wonderful_World
                 else if (Answer.ToUpper() == "Leave".ToUpper())
                 {
                     MainAreaQuestion();
+                    MainArea();
                 }
+
 
 
             }
@@ -223,6 +227,7 @@ namespace Josiahs_Wonderful_World
                 if (Answer.ToUpper() == "Leave".ToUpper())
                 {
                     MainAreaQuestion();
+                    MainArea();
                 }
 
                 Answer = Console.ReadLine();
@@ -387,18 +392,20 @@ namespace Josiahs_Wonderful_World
                         else if (Answer.ToUpper() == "No".ToUpper())
                         {
                             PrintLobby();
+                            LobbyAnswers();
                         }
 
                         else
                         {
                             SnarkyRemark();
-
+                            LobbyAnswers();
                         }
                     }
 
                     else if (Answer.ToUpper() == "No".ToUpper())
                     {
                         PrintLobby();
+                        LobbyAnswers();
                     }
 
                 }
@@ -412,6 +419,7 @@ namespace Josiahs_Wonderful_World
                     if (Answer.ToUpper() == "Leave".ToUpper())
                     {
                         PrintLobby();
+                        LobbyAnswers();
                     }
 
                 }
@@ -445,19 +453,25 @@ namespace Josiahs_Wonderful_World
                     if (Answer.ToUpper() == "Leave".ToUpper())
                     {
                         PrintLobby();
+                        LobbyAnswers();
                     }
                 }
 
                 else if (Answer == "Go back to the lobby")
                 {
                     PrintLobby();
+                    LobbyAnswers();
                 }
 
             }
 
             else if (Answer.ToUpper() == "The empty benches".ToUpper())
             {
-                TypeLine("You walk over to the blue hard plastic benches and take a seat\n");
+                Type("You walk over to the ");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Type("blue ");
+                Console.ForegroundColor = ConsoleColor.White;
+                TypeLine("hard plastic benches and take a seat\n");
                 Type("Beside you is a ");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Type("lime green");
@@ -471,6 +485,7 @@ namespace Josiahs_Wonderful_World
                 if (Answer.ToUpper() == "Leave".ToUpper())
                 {
                     PrintLobby();
+                    LobbyAnswers();
                 }
             }
 
@@ -486,18 +501,20 @@ namespace Josiahs_Wonderful_World
                 if (Answer.ToUpper() == "Turn around".ToUpper())
                 {
                     PrintLobby();
+                    LobbyAnswers();
                 }
-            }
-
-            else if (Answer.ToUpper() == "Go back".ToUpper())
-            {
-                MainAreaQuestion();
             }
 
             else if (Answer.ToUpper() == "Back to the other hallway".ToUpper())
             {
                 MainAreaQuestion();
                 MainArea();
+            }
+
+            else
+            {
+                SnarkyRemark();
+                LobbyAnswers();
             }
         }
 
@@ -639,10 +656,14 @@ namespace Josiahs_Wonderful_World
                 TypeLine("You died by electrocution\n");
                 TypeLine(">Try again\n");
 
+                Answer = Console.ReadLine();
+
                 if (Answer.ToUpper() == "Try again".ToUpper())
                 {
                     WiresQuestion();
                     PrintWires();
+
+                    Answer = Console.ReadLine();
                 }
             }
         }
